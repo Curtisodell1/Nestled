@@ -13,9 +13,11 @@ from flask import Flask, request, make_response
 from config import app, db, api
 # Add your model imports
 
-from models import User, Task, TaskContainer, Entry, TaskAssignment
+from models import *
 
 # Views go here!
+api = Api(app)
+
 
 @app.route('/')
 def index():
