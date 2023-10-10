@@ -21,10 +21,12 @@ class User(db.Model, SerializerMixin):
     updated_at = db.Column(db.DateTime, onupdate=db.func.now())
     
     #add relationships Entry and TaskAssignment
-    task_assignments = db.relationship("TaskAssignment", backref="users", cascade="all, delete-orphan")
-    entries = db.relationship("Entry", backref="users", cascade="all, delete-orphan")
+    task_assignments = db.relationship("TaskAssignment", backref="user", cascade="all, delete-orphan")
+    entries = db.relationship("Entry", backref="user", cascade="all, delete-orphan")
 
-    serialize_rules = 
+    #serializer rules
+    serialize_rules = ("-task_assignments.user")
+    serialize_rules = ("-entries.user")
 
     #Validation
     @validates("username", "department", "start_date")
@@ -53,6 +55,9 @@ class Task(db.Model, SerializerMixin):
 
     #Relationship with task container
     task_container_id = db.Column(db.Integer, db.ForeignKey("task_containers.id"))
+
+    #serializer rules
+    serialize_rules = ("-task_container.tasks")
 
     #Validation
     @validates("title", "about", "time_requirement")
@@ -85,6 +90,10 @@ class TaskContainer(db.Model, SerializerMixin):
     tasks = db.relationship("Task", backref="task_container", cascade="all, delete-orphan")
     task_assignments = db.relationship("TaskAssignment", backref="task_container", cascade="all, delete-orphan")
 
+    #serializer rules
+    serialize_rules = ("-tasks.task_container")
+    serialize_rules = ("-task_assignments.task_container")
+
     #Validation
     @validates("name")
     def validates_tasks(self, key, prop):
@@ -106,6 +115,9 @@ class Entry(db.Model, SerializerMixin):
 
     #relationship with User
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+
+    #serializer rules
+    serialize_rules = ("-user.entries")
 
     #Validation
     @validates("feeling", "notes", "date")
@@ -130,7 +142,12 @@ class TaskAssignment(db.Model, SerializerMixin):
     __tablename__ = "task_assignments"
 
     id = db.Column(db.Integer, primary_key=True)
+    complete = db.Column(db.Integer)
     
     #relationships with task_containers and users
     task_container_id = db.Column(db.Integer, db.ForeignKey("task_containers.id"))
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+
+    #serializer rules
+    serialize_rules = ("-task_container.task_assignments")
+    serialize_rules = ("-user.task_assignments")

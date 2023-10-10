@@ -1,0 +1,27 @@
+.Header{
+    background: yellow;
+}
+
+.InputField{
+    background-color: green;
+    margin: 15px;
+}
+
+.Parent{
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    background-color: orangered;
+    width: 30vw;
+    height: 70vh;
+}
+
+.Page{
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+}
+
+.FormSubmitButton{
+    padding: 5px;
+}
