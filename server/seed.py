@@ -31,6 +31,15 @@ def create_task_containers():
         all_task_containers.append(t)
     return all_task_containers
 
+# def create_task_containers():
+#     all_task_containers = []
+#     for x in range(10): 
+#         t = TaskContainer (
+#         name = fake.name()
+#         )
+#         all_task_containers.append(t)
+#     return all_task_containers
+
 if __name__ == '__main__':
     fake = Faker()
     with app.app_context():

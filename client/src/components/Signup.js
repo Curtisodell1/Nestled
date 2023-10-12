@@ -2,7 +2,22 @@
 function Signup(){
     
     return(
-        <h1>Hi Im Signup Page</h1>
+    <div>
+        <form>
+            <h1>Signup</h1>
+            <div>
+                <input></input>
+            </div>
+            <div>
+                <input></input>
+            </div>
+            <div>
+                <button>
+                    Submit
+                </button>
+            </div>
+        </form>
+    </div>
     )
 }
 

@@ -1,9 +1,51 @@
-
+import { Link } from "react-router-dom"
 
 function Header(){
     
     return(
-        <h1 id="HeaderStyle" >Hi I'm Header Page</h1>
+        <div className="HeaderStyle">
+            <span className="NavBarButtonContainer">
+                <button>
+                    <Link to = "/" >
+                        <button>
+                            Home
+                        </button>
+                    </Link> 
+                    <Link to = "/task">
+                        <button>
+                            Task
+                        </button>
+                    </Link>
+                    <Link to ="/tasklist">
+                        <button>
+                            Preset Tasks
+                        </button>
+                    </Link>
+                    <Link to = "/entry">
+                        <button>
+                            Entry
+                        </button>
+                    </Link>
+                    <Link to = "/">
+                        <button>
+                            TBD
+                        </button>
+                    </Link>
+                </button>
+            </span>
+            <span className="LoginButtonContainer">
+            <Link to ="login">
+                <button>
+                    Login
+                </button>
+            </Link>
+            <Link to = "/signup" >
+                <button>
+                    Signup
+                </button>
+            </Link>
+            </span>
+        </div>
     )
 }
 
