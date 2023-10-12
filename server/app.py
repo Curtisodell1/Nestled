@@ -1,28 +1,12 @@
-#!/usr/bin/env python3
-
-# Standard library imports
-
-# Remote library imports
 from flask import Flask, request, session
 from flask_restful import Api, Resource
 from flask_migrate import Migrate
 from flask_cors import CORS
 from flask import Flask, request, make_response
 
-# Local imports
 from config import app, db, api
-# Add your model imports
 
 from models import *
-
-# Views go here!
-
-
-
-@app.route('/')
-def index():
-    return '<h1>Project Server</h1>'
-
 
 # Login and Signup pages - revisit after researching a bit more
 class Login(Resource):
@@ -52,7 +36,6 @@ class Tasks(Resource):
     
     def delete(self, task_container_id):
         task = [t.to_dict() for t in Task.query.filter(Task.task_container_id == task_container_id)]
-
         if task is None:
             return make_response({"error":"task not found"}, 404)
         
@@ -65,12 +48,13 @@ class Tasks(Resource):
         try:
             # this will need to be defined further
             task = Task(
-                title = task['title']
-                about = task['about']
-                time_requirement = task['time_requirement']
+                title = data.get("title"),
+                about = data.get("about"),
+                time_requirement = data.get("time_requirement")
             )
             db.session.add(task)
             db.session.commit()
+            print(task.to_dict())
             return make_response(task.to_dict(), 201)
         except:
             return make_response({"error": "error message here"}, 400)
@@ -79,7 +63,7 @@ api.add_resource(Tasks, "/tasks")
 
 class TaskContainers(Resource):
     def get(self):
-        task_lists = [t.to_dict() for t in TaskContainer]
+        task_lists = [t.to_dict() for t in TaskContainer.query.all()]
         return make_response(task_lists, 200)
 
 api.add_resource(TaskContainers, "/presets")

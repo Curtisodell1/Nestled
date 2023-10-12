@@ -1,9 +1,12 @@
 
 
-function TaskListCard(){
+function TaskListCard({name, id}){
     
     return(
-        <h1>Hi I'm TaskListCard Page</h1>
+        <div>
+        <h1>{name}</h1>
+        <p>{id}</p>
+        </div>
     )
 }
 

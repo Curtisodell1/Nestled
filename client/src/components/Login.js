@@ -3,7 +3,22 @@
 function Login(){
     
     return(
-        <h1>Hi Im Login Page</h1>
+        <div>
+            <form>
+                <h1>Login</h1>
+                <div>
+                    <input></input>
+                </div>
+                <div>
+                    <input></input>
+                </div>
+                <div>
+                    <button>
+                        Submit
+                    </button>
+                </div>
+            </form>
+        </div>
     )
 }
 

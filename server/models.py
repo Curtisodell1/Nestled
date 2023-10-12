@@ -25,21 +25,20 @@ class User(db.Model, SerializerMixin):
     entries = db.relationship("Entry", backref="user", cascade="all, delete-orphan")
 
     #serializer rules
-    serialize_rules = ("-task_assignments.user")
-    serialize_rules = ("-entries.user")
+    serialize_rules = ("-task_assignments.user", )
 
     #Validation
     @validates("username", "department", "start_date")
     def validates_users(self, key, prop):
-        if self == "username":
+        if key == "username":
             if 3 < prop < 20:
                 return prop
             else:
                 return ValueError("gots ta be a string greater than 3 and less than 20 characters")
-        if self == "department":
+        if key == "department":
             if prop == "HR":
                 return prop
-        if self == "start_date":
+        if key == "start_date":
             # add conditions
             return prop
         else:
@@ -57,22 +56,22 @@ class Task(db.Model, SerializerMixin):
     task_container_id = db.Column(db.Integer, db.ForeignKey("task_containers.id"))
 
     #serializer rules
-    serialize_rules = ("-task_container.tasks")
+    # serialize_rules = ("-task_container.tasks")
 
     #Validation
     @validates("title", "about", "time_requirement")
     def validates_tasks(self, key, prop):
-        if self == "title":
+        if key == "title":
             if 3 < len(prop) < 20:
                 return prop
             else:
                 return ValueError("gots ta be a string greater than 3 and less than 20 characters")
-        if self == "about":
+        if key == "about":
             if 25 < len(prop) < 250:
                 return prop
             else:
                 return ValueError("gots ta be a string greater than 25 and less than 250 characters")
-        if self == "time_requirement":
+        if key == "time_requirement":
             if 5<= prop <= 60:
                 return prop
             else:
@@ -91,13 +90,12 @@ class TaskContainer(db.Model, SerializerMixin):
     task_assignments = db.relationship("TaskAssignment", backref="task_container", cascade="all, delete-orphan")
 
     #serializer rules
-    serialize_rules = ("-tasks.task_container")
-    serialize_rules = ("-task_assignments.task_container")
+    serialize_rules = ("-tasks.task_container", "-task_assignments.task_container")
 
     #Validation
     @validates("name")
     def validates_tasks(self, key, prop):
-        if self == "name":
+        if key == "name":
             if 3 < len(prop) < 20:
                 return prop
             else:
@@ -117,22 +115,22 @@ class Entry(db.Model, SerializerMixin):
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
 
     #serializer rules
-    serialize_rules = ("-user.entries")
+    serialize_rules = ("-user.entries",)
 
     #Validation
     @validates("feeling", "notes", "date")
     def validates_tasks(self, key, prop):
-        if self == "feeling":
+        if key == "feeling":
             if 0 < prop < 11:
                 return prop
             else:
                 return ValueError("please choose a value between 1 and 10 (inclusive)")
-        if self == "notes":
+        if key == "notes":
             if 3 < len(prop) < 20:
                 return prop
             else:
                 return ValueError("gots ta be a string greater than 3 and less than 20 characters")
-        if self == "date":
+        if key == "date":
             # add conditions
             return prop
         else:
@@ -149,5 +147,4 @@ class TaskAssignment(db.Model, SerializerMixin):
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
 
     #serializer rules
-    serialize_rules = ("-task_container.task_assignments")
-    serialize_rules = ("-user.task_assignments")
+    serialize_rules = ("-task_container.task_assignments", "-user.task_assignments")

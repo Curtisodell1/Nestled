@@ -3,6 +3,10 @@
     background-color: blue;
 }
 
-document{
-    margin: 0%;
+#LoginButtonContainer{
+    background-color: green;
+}
+
+#NavBarButtonContainer{
+    background-color: yellow;
 }
