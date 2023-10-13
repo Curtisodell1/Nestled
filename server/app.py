@@ -34,14 +34,7 @@ class Tasks(Resource):
         task = [t.to_dict() for t in Task.query.filter(Task.task_container_id == task_container_id)]
         return make_response(task, 200)
     
-    def delete(self, task_container_id):
-        task = [t.to_dict() for t in Task.query.filter(Task.task_container_id == task_container_id)]
-        if task is None:
-            return make_response({"error":"task not found"}, 404)
-        
-        db.session.delete(task)
-        db.session.commit()
-        return make_response({}, 204)
+
     
     def post(self):
         data = request.get_json()
@@ -58,8 +51,36 @@ class Tasks(Resource):
             return make_response(task.to_dict(), 201)
         except:
             return make_response({"error": "error message here"}, 400)
+        
+
 
 api.add_resource(Tasks, "/tasks")
+
+class TaskById(Resource):
+    def patch(self, id):
+        task = Task.query.filter(Task.id == id).one_or_none()
+        if task == None:
+            return make_response({"error": "Task not found"}, 404)
+        datas = request.get_json()
+        try:
+            for data in datas:
+                setattr (task, data, datas[data])
+            db.session.add(task)
+            db.session.commit()
+        except:
+            return make_response({"errors": ["validation errors"]}, 400)
+        
+    def delete(self, id):
+        task = [Task.query.filter(Task.id == id).one_or_none()]
+        
+        if task is None:
+            return make_response({"error":"task not found"}, 404)
+        else:
+            db.session.delete(task)
+            db.session.commit()
+            return make_response({}, 204)
+
+api.add_resource(TaskById, "/task/<int:id>")
 
 class TaskContainers(Resource):
     def get(self):
@@ -73,7 +94,6 @@ class TaskContainerById(Resource):
         task_list = TaskContainer.query.filter(TaskContainer.id == id).one_or_none()
         task_list_to_dict = task_list.to_dict()
         return make_response(task_list_to_dict, 200)
-
     def delete(self, id):
         task_list = TaskContainer.query.filter(TaskContainer.id == id).one_or_none()
         if task_list is None:
@@ -81,7 +101,19 @@ class TaskContainerById(Resource):
         else:
             db.session.delete(task_list)
             db.session.commit()
-        return make_response({}, 204)
+            return make_response({}, 204)
+    def patch(self, id):
+        task_container = TaskContainer.query.filter(TaskContainer.id == id).one_or_none()
+        if task_container == None:
+            return make_response({"error": "Task_container not found"}, 404)
+        datas = request.get_json()
+        try:
+            for data in datas:
+                setattr (task_container, data, datas[data])
+            db.session.add(task_container)
+            db.session.commit()
+        except:
+            return make_response({"errors": ["validation errors"]}, 400)
 
 api.add_resource(TaskContainerById, "/preset/<int:id>")
 
