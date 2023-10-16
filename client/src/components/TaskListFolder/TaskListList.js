@@ -7,7 +7,7 @@ function TaskListList( {presets} ) {
         {presets.map((preset) => (
             <TaskListCard
             key = {preset.id}
-            {...preset}a
+            {...preset}
             />
         ))}
     </div>

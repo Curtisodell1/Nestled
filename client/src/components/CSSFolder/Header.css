@@ -1,6 +1,7 @@
 
 #HeaderStyle{
     background-color: blue;
+    height: 7vh;
 }
 
 #LoginButtonContainer{
@@ -10,3 +11,4 @@
 #NavBarButtonContainer{
     background-color: yellow;
 }
+

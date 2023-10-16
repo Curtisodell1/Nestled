@@ -2,12 +2,16 @@ import TaskCard from "./TaskCard";
 
 // UseContext will go here 
 
-function TaskContainer( /*use Context data goes here*/ ) {
+function TaskContainer( {tasks} ) {
     return (
-    <div className="cards">
-        {data.map((data) => (
-            <TaskCard /* data.id etc */ ></TaskCard>
-        ))}
+    <div className="Cards">
+        {tasks.map((task) => (
+            <TaskCard
+            key = {task.id}
+            {...task}
+            >
+            </TaskCard>
+            ))}
     </div>
 );
 }

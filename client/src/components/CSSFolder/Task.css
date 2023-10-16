@@ -1,0 +1,40 @@
+#TaskPageContainer{
+    display: flex;
+    align-items: flex-start;
+    justify-content: left;
+    display: grid
+}
+
+.TaskPageForm{
+    font-size: larger;
+    display: flex;
+    justify-self: center;
+    justify-content: space-around;
+    align-items: center;
+    height: 5vh;
+    width: 45vw;
+    background-color: green;
+    border-radius: 30px;
+
+}
+
+.TaskCard{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: lightblue;
+    margin: 2%;
+    width: 20vw;
+    height: 25vh;
+    border-radius: 30px;
+}
+
+.Cards{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.Dropdown{
+
+}
