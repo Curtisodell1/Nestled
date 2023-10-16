@@ -34,16 +34,16 @@ function Header(){
                 </button>
             </span>
             <span className="LoginButtonContainer">
-            <Link to ="login">
+            <Link to ="/login">
                 <button>
                     Login
                 </button>
             </Link>
-            <Link to = "/signup" >
+            {/* <Link to = "/signup" >
                 <button>
                     Signup
                 </button>
-            </Link>
+            </Link> */}
             </span>
         </div>
     )

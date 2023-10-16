@@ -13,14 +13,12 @@ from models import db, User, TaskContainer
 fake = Faker()
 
 def create_users():
-    all_users = []
-    for _ in range(10):
-        u = User (
-        username = fake.name(),
-        department = "HR" 
-        )
-        all_users.append(u)
-    return all_users
+    u1 = User()
+    u1.username = "Curtis"
+    u1.password_hash = "lovelyisgreat"
+    users = u1
+
+    return(users)
 
 def create_task_containers():
     all_task_containers = []
@@ -50,7 +48,7 @@ if __name__ == '__main__':
         print("Starting seed...")
         users = create_users()
         task_containers = create_task_containers()
-        db.session.add_all(users)
+        db.session.add(users)
         db.session.add_all(task_containers)
         db.session.commit()
 
