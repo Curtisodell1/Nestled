@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom"
+import React, {useContext, useState} from 'react'
+import { UserContext } from "./Context"
 
 function Header(){
     
+    const {user, setUser} = useContext(UserContext)
+
     return(
         <div className="HeaderStyle">
             <span className="NavBarButtonContainer">
@@ -34,16 +38,10 @@ function Header(){
                 </button>
             </span>
             <span className="LoginButtonContainer">
-            <Link to ="/">
-                <button>
-                    Login
+                <button
+                onClick={() => setUser(null)}>
+                Logout
                 </button>
-            </Link>
-            {/* <Link to = "/signup" >
-                <button>
-                    Signup
-                </button>
-            </Link> */}
             </span>
         </div>
     )
