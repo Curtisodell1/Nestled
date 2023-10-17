@@ -34,7 +34,7 @@ function Header(){
                 </button>
             </span>
             <span className="LoginButtonContainer">
-            <Link to ="/login">
+            <Link to ="/">
                 <button>
                     Login
                 </button>

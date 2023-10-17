@@ -1,19 +1,23 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 import TaskContainer from './TaskContainer'
-
+import { UserContext } from "../Context"
 
 function Task( {onAddTask}){
     const [title, setTitle] = useState("")
     const [about, setAbout] = useState("")
     const [timeRequirement, setTimeRequirement] = useState("")
     const [tasks, setTasks] = useState([])
+    const {user} = useContext(UserContext)
+
+    console.log(user)
 
     function handleSubmit(e) {
         e.preventDefault();
         let newTask = {
             "title" : title,
             "about" : about,
-            "time_requirement": parseInt(timeRequirement)
+            "time_requirement": parseInt(timeRequirement),
+            "user_id" : user.id
         }
         console.log(newTask)
         fetch("http://localhost:5555/tasks", {
