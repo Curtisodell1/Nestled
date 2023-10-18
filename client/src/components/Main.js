@@ -6,6 +6,7 @@ import TaskListPage from "./TaskListFolder/TaskListPage"
 import Entry from "./Entry";
 import Header from "./Header";
 import Home from "./Home";
+import MyTasks from "./MyTasksFolder/MyTasksPage";
 
 
 
@@ -29,8 +30,11 @@ return (
         <Route path = "/tasklist">
             <TaskListPage/>
         </Route>
-        <Route path = "/entry">
+        {/* <Route path = "/entry">
             <Entry/>
+        </Route> */}
+        <Route path = "/mytasks">
+            <MyTasks/>
         </Route>
     </div>
     )

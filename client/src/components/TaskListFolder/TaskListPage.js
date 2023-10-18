@@ -1,4 +1,4 @@
-import TaskListList from "./TaskListList"
+import TaskListList from "./TaskListContainer"
 import {useState, useEffect} from 'react'
 
 
@@ -6,7 +6,7 @@ import {useState, useEffect} from 'react'
 function TaskList(){
     const [presets, setPresets] = useState([])
     useEffect(() => {
-        fetch("http://127.0.0.1:5555/presets")
+        fetch("/presets")
         .then((r) => r.json())
         .then((data) => setPresets(data) )
     }, [])

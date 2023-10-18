@@ -12,44 +12,38 @@ from models import *
 # Login and Signup pages - revisit after researching a bit more
 app.secret_key = b'5\xe9t\x01\x12A\n\xe4\xb0\x9b\x05\xde\xd4\xc5\x888'
 
-# 1.✅ Create a Signup route
-class Signup ( Resource ) :
-    #1.2 The signup route should have a post method
-    def post ( self ) :
-        #1.2.1 Get the values from the request body with get_json
-        rq = request.get_json()
-        User.clear_validation_errors()
-        try :
-            #1.2.2 Create a new user, however only pass email/username ( and any other values we may have )
+class Signup(Resource):
+    def post(self):
+        req = request.get_json()
+        password = req.get("password")
+
+        try:
             new_user = User(
-                username = rq[ 'username' ],
-                #1.2.3 Call the password_hash method on the new user and set it to the password from the request
-                password_hash = rq[ 'password' ]
+                email=req.get("email"),
+                username=req.get("username"),
             )
-            if new_user.validation_errors :
-                raise ValueError
-            
-            #1.2.4 Add and commit
-            db.session.add( new_user )
+
+            new_user.password_hash = password
+
+            db.session.add(new_user)
             db.session.commit()
+            session["user_id"] = new_user.id
 
-            #1.2.5 Add the user id to session under the key of user_id
-            session[ 'user_id' ] = new_user.id
+            return (
+                new_user.to_dict(
+                    only=(
+                        "id",
+                        "email",
+                        "username",
+                    )
+                ),
+                200,
+            )
+        except ValueError:
+            return {
+                "message": "* Username must be minimum of 6 characters. Password must be minimum of 8 characters"
+            }, 422
 
-            #1.2.6 send the new user back to the client with a status of 201
-            return new_user.to_dict(), 201
-        except :
-            errors = new_user.validation_errors
-            new_user.clear_validation_errors()
-            return { 'errors': errors }, 422
-    #1.3 Test out your route with the client or Postman
-
-    #1.1 Use add_resource to add a new endpoint '/signup' 
-api.add_resource( Signup, '/signup')
-
-# 2.✅ Test this route in the client/src/components/Authentication.sj 
-
-# 3.✅ Create a Login route
 class Login ( Resource ) :
     def post ( self ) :
         username = request.get_json()[ 'username' ]
@@ -110,6 +104,23 @@ class Tasks(Resource):
 
 api.add_resource(Tasks, "/tasks")
 
+class MyTasks(Resource):
+    def get(self, user_id):
+        tasks_list = []
+        # for task in TaskAssignment().query.filter(TaskAssignment.user_id == user_id) :
+        #     tasks_list.append(task.to_dict())
+    # return team_by_name
+    #     tasks = [t for t in TaskAssignment.query.filter(TaskAssignment.user_id == user_id)]
+    #     task = [t["task_container"] for t in tasks]
+    #     just_task = []
+    #     for t in task:
+    #         just_task.append(t)
+
+
+        return make_response(tasks_list, 200)
+    
+api.add_resource(MyTasks, "/mytasks/<int:user_id>")
+
 class TaskById(Resource):
     def get(self, id):
         task = Task.query.filter(Task.id == id).one_or_none()
@@ -145,6 +156,21 @@ class TaskContainers(Resource):
     def get(self):
         task_lists = [t.to_dict() for t in TaskContainer.query.all()]
         return make_response(task_lists, 200)
+    
+    def post(self):
+        data = request.get_json()
+        try:
+            # this will need to be defined further
+            task_preset = TaskContainer(
+                user_id = data.get("user_id"),
+                task_container_id = data.get("task_container_id"),
+                complete = data.get("complete")
+            )
+            db.session.add(task_preset)
+            db.session.commit()
+            return make_response(task.to_dict(only =("user_id", "task_container_id", "complete",)), 201)
+        except:
+            return make_response({"error": "error message here"}, 422)
 
 api.add_resource(TaskContainers, "/presets")
 
@@ -177,13 +203,12 @@ class TaskContainerById(Resource):
 api.add_resource(TaskContainerById, "/preset/<int:id>")
 
 
-class MyTaskContainers(Resource):
-    def get(self, user_id):
-        my_task_list = [t.to_dict() for t in TaskAssignment.query.filter(TaskAssignment.user_id == user_id)]
-        return make_response(my_task_list)
+# class MyTaskContainers(Resource):
+#     def get(self):
+#         my_task_list = [t.to_dict() for t in TaskAssignment.query.filter(TaskAssignment.user_id == user_id)]
+#         return make_response(my_task_list)
 
-api.add_resource(MyTaskContainers, "/mypresets")
-
+# api.add_resource(MyTaskContainers, "/mypresets")
 
 if __name__ == '__main__':
     app.run(port=5555, debug=True)
