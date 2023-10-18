@@ -19,7 +19,6 @@ class Signup(Resource):
 
         try:
             new_user = User(
-                email=req.get("email"),
                 username=req.get("username"),
             )
 
@@ -33,7 +32,6 @@ class Signup(Resource):
                 new_user.to_dict(
                     only=(
                         "id",
-                        "email",
                         "username",
                     )
                 ),
@@ -43,6 +41,8 @@ class Signup(Resource):
             return {
                 "message": "* Username must be minimum of 6 characters. Password must be minimum of 8 characters"
             }, 422
+
+api.add_resource( Signup, '/signup')
 
 class Login ( Resource ) :
     def post ( self ) :
