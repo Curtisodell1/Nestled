@@ -21,7 +21,7 @@ function LoginForm({setSignup}) {
     function onSubmit(e) {
         console.log("hello")
         e.preventDefault()
-        fetch('http://127.0.0.1:5555/login', {
+        fetch('/login', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -37,7 +37,7 @@ function LoginForm({setSignup}) {
 
     return (
         <> 
-        <h2>Please Log in or Sign up!</h2>
+        <h2>You know what to do (hint: login)</h2>
             <form onSubmit = { onSubmit }>
                 <label>
                     Username
@@ -51,7 +51,6 @@ function LoginForm({setSignup}) {
                 </>
                 <button type='submit'>Submit</button>
             </form>
-            {/* <button >{setSignup}</button> */}
         </>
     )
 }

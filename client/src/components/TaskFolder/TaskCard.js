@@ -1,7 +1,7 @@
-// information from DB will be imported here
 
 
-function TaskCard({id, title, about, time_requirement}){
+function TaskCard({id, title, about, time_requirement, task_container_id, presets}){
+    
     function handleDelete(id){
         fetch('http://localhost:5555/task/' + id, 
         {
@@ -11,18 +11,28 @@ function TaskCard({id, title, about, time_requirement}){
         .then(res => console.log(res))
     }
 
+    function handlePresetChange(){
+        console.log("Hi")
+        // build patch method here 
+    }
+
     return(
             <div className="TaskCard">
-                <select className="Dropdown">
-                    <option value="HR">HR</option>
-                    <option value="Sales">Sales</option>
-                    <option value="Marketing">Marketing</option>
-                    <option value="Engineering">Engineering</option>
+                <select className="Dropdown" 
+                value={task_container_id}
+                onChange={() => handlePresetChange()}
+                >
+                    {presets.map((preset) => 
+                    <option 
+                    value={preset.id}
+                    >
+                    {preset.name}
+                    </option>) }
                 </select>
                 <h1>{title}</h1>
                 <p>{about}</p>
                 <p>{time_requirement}</p>
-                <button onClick={(e) => handleDelete(id)}>Delete</button>
+                <button onClick={() => handleDelete(id)}>Delete</button>
             </div>
     )
 }

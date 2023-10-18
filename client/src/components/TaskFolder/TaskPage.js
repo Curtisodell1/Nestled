@@ -7,6 +7,7 @@ function Task( {onAddTask}){
     const [about, setAbout] = useState("")
     const [timeRequirement, setTimeRequirement] = useState("")
     const [tasks, setTasks] = useState([])
+    const [presets, setPresets] = useState([])
     const {user} = useContext(UserContext)
 
     console.log(user)
@@ -20,7 +21,7 @@ function Task( {onAddTask}){
             "user_id" : user.id
         }
         console.log(newTask)
-        fetch("http://localhost:5555/tasks", {
+        fetch("/tasks", {
             method: "POST",
             headers: {
             "Content-Type": "Application/JSON",
@@ -31,9 +32,15 @@ function Task( {onAddTask}){
     }
 
     useEffect(() => {
-        fetch("http://127.0.0.1:5555/tasks")
+        fetch("/tasks")
         .then((r) => r.json())
         .then((data) => setTasks(data) )
+    }, [])
+
+    useEffect(() => {
+        fetch("/presets")
+        .then((r) => r.json())
+        .then((data) => setPresets(data) )
     }, [])
 
     return(
@@ -55,10 +62,8 @@ function Task( {onAddTask}){
                 onChange={(e) => setTimeRequirement(e.target.value)}
                 />
                 <select className="Dropdown">
-                    <option value="HR">HR</option>
-                    <option value="Sales">Sales</option>
-                    <option value="Marketing">Marketing</option>
-                    <option value="Engineering">Engineering</option>
+                    {presets.map((preset) => 
+                    <option value={preset.id}>{preset.name}</option>) }
                 </select>
                 <button
                 type="submit">
@@ -67,6 +72,7 @@ function Task( {onAddTask}){
             </form>
             <TaskContainer
             tasks={tasks}
+            presets={presets}
             >
             </TaskContainer>
             <div>
