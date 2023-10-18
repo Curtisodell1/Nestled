@@ -1,10 +1,12 @@
+import MyTasks from "./MyTasksPage"
 
-function MyTaskCard( {myTask, title, about} ) {
-
-    console.log(myTask)
+function MyTaskCard( {about, title} ) {
 return(
     <div>
-        {title}
+            <h2>{title}</h2>
+            {about}
+            
+            
     </div>
 )
 }
