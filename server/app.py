@@ -160,14 +160,14 @@ class TaskContainers(Resource):
         data = request.get_json()
         try:
             # this will need to be defined further
-            task_preset = TaskContainer(
+            task_container = TaskAssignment(
                 user_id = data.get("user_id"),
                 task_container_id = data.get("task_container_id"),
                 complete = data.get("complete")
             )
-            db.session.add(task_preset)
+            db.session.add(task_container)
             db.session.commit()
-            return make_response(task.to_dict(only =("user_id", "task_container_id", "complete",)), 201)
+            return make_response(task_container.to_dict(only =("user_id", "task_container_id", "complete",)), 201)
         except:
             return make_response({"error": "error message here"}, 422)
 
