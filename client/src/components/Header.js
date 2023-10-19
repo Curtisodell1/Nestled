@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import React, {useContext, useState} from 'react'
+import React, {useContext} from 'react'
 import { UserContext } from "./Context"
 import CheckSession from "./CheckSession"
 
@@ -12,10 +12,13 @@ function Header(){
         {
         method: 'DELETE',
         })
-        .then(res => res.json())
-        .then(setUser())
-        .then(CheckSession())
-        }
+        .then((r) => 
+        {
+        if (r.ok) 
+        {
+            setUser(null)
+        }})}
+
     
     return(
         <div className="HeaderStyle">
@@ -50,7 +53,7 @@ function Header(){
             </span>
             <span className="LoginButtonContainer">
                 <button
-                onClick={() => logout}
+                onClick = { () => logout()}
                 >
                 Logout
                 </button>
@@ -58,5 +61,6 @@ function Header(){
         </div>
     )
 }
+
 
 export default Header
