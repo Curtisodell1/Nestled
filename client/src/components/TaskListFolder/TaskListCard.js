@@ -25,11 +25,16 @@ function TaskListCard({name, id}){
     }
 }
 
+    // function deletePresetForUser(){
+
+    // }
+
     return(
         <div className='TaskCard'>
         <h1>{name}</h1>
         <p>{id}</p>
         <button onClick={(e) => assignPresetToUser(e)}>Add to my list</button>
+        {/* <button onClick={(e)=> deletePresetForUser(e)}>Remove from my list</button> */}
         </div>
     )
 }

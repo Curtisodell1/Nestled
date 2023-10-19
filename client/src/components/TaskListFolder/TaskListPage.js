@@ -23,7 +23,6 @@ function TaskList(){
         e.preventDefault();
         let newPreset = {
             "name" : presetName,
-            
         }
         console.log(newPreset)
         fetch("/presets", {
