@@ -28,7 +28,7 @@ function Task( {onAddTask}){
         },
         body: JSON.stringify(newTask),
         })
-            .then((res) => res.json())
+        .then((res) => res.json())
     }
 
     useEffect(() => {
