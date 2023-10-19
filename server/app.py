@@ -201,7 +201,7 @@ class TaskContainerById(Resource):
 
 api.add_resource(TaskContainerById, "/preset/<int:id>")
 
-class TaskAssignment(Resource):
+class Assign(Resource):
     def post(self):
         data = request.get_json()
         try:
@@ -217,7 +217,7 @@ class TaskAssignment(Resource):
         except:
             return make_response({"error": "error message here"}, 422)
         
-api.add_resource(TaskAssignment, "/assignments")
+api.add_resource(Assign, "/assignments")
 
 # class MyTaskContainers(Resource):
 #     def get(self):
