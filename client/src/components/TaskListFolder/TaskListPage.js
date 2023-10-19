@@ -36,7 +36,6 @@ function TaskList(){
         .then((res) => res.json())
     }
 
-    
     return(
         <>
         <span>
@@ -52,7 +51,6 @@ function TaskList(){
             </form>
             </div>
         </span>
-
         <TaskListList presets={presets}></TaskListList>
         </>
     )

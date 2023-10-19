@@ -9,6 +9,13 @@ function Task( {onAddTask}){
     const [tasks, setTasks] = useState([])
     const [presets, setPresets] = useState([])
     const {user} = useContext(UserContext)
+    // Come back and change form to be dynamic and update to default state after submit
+    // const [form, setForm] = useState({
+    //     title:'',
+    //     about:'',
+    //     timeRequirement:''
+    // })
+
 
     console.log(user)
 
@@ -29,13 +36,16 @@ function Task( {onAddTask}){
         body: JSON.stringify(newTask),
         })
         .then((res) => res.json())
+        .then(task => setTasks([...tasks, task]))
     }
+
+
 
     useEffect(() => {
         fetch("/tasks")
         .then((r) => r.json())
         .then((data) => setTasks(data) )
-    }, [])
+    }, [setTasks])
 
     useEffect(() => {
         fetch("/presets")
@@ -73,6 +83,7 @@ function Task( {onAddTask}){
             <TaskContainer
             tasks={tasks}
             presets={presets}
+            setTasks={setTasks}
             >
             </TaskContainer>
         </div>

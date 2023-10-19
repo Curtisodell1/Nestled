@@ -5,12 +5,16 @@
   --text: hsla(0, 0%, 100%, 0.88);
 }
 
-
-
 @import "./components/CSSFolder/Header.css";
 @import "./components/CSSFolder/Entry.css";
 @import "./components/CSSFolder/Home.css";
 @import "./components/CSSFolder/Login.css";
 @import "./components//CSSFolder/Signup.css";
 @import "./components/CSSFolder/Task.css";
-@import "./components/CSSFolder/TaskList.css"
+@import "./components/CSSFolder/TaskList.css";
+
+body{
+  margin: 0%;
+  padding: 0%;
+  background-color: #E1B1B1;
+}
