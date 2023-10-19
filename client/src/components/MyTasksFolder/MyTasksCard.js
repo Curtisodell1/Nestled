@@ -4,7 +4,7 @@ function MyTaskCard( {about, title} ) {
 return(
     <div>
             <h2>{title}</h2>
-            {about}
+            <div>{about}</div>
             
             
     </div>

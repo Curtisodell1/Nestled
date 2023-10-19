@@ -75,9 +75,6 @@ function Task( {onAddTask}){
             presets={presets}
             >
             </TaskContainer>
-            <div>
-                Here
-            </div>
         </div>
     )
 }

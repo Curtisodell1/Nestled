@@ -104,28 +104,10 @@ class Tasks(Resource):
 
 api.add_resource(Tasks, "/tasks")
 
-# class MyTasks(Resource):
-#     def get(self, user_id):
-#         tasks_list = []
-#         for task in TaskAssignment().query.filter(TaskAssignment.user_id == user_id) :
-#             tasks_list.append(task.to_dict())
-# 
-#     #     tasks = [t for t in TaskAssignment.query.filter(TaskAssignment.user_id == user_id)]
-#     #     task = [t["task_container"] for t in tasks]
-#     #     just_task = []
-#     #     for t in task:
-#     #         just_task.append(t)
-
-
-#         return make_response(tasks_list, 200)
-    
-# api.add_resource(MyTasks, "/mytasks/<int:user_id>")
-
 class MyTasks(Resource):
     def get(self):
         user_id = session.get("user_id")
         tasks_list = TaskAssignment.query.filter(TaskAssignment.user_id == user_id).all()
-        print(tasks_list)
         myTasks =[]
         for assignment in tasks_list:
             myTasks += assignment.task_container.tasks
@@ -135,7 +117,6 @@ class MyTasks(Resource):
         # for task in tasks_list :
         #     tasks_list.append(task.to_dict(only = ("task_container", "complete")))
         return(tasks, 200)
-
 
 api.add_resource(MyTasks, "/mytasks")
 
