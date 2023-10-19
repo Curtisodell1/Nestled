@@ -156,20 +156,17 @@ class TaskContainers(Resource):
         task_lists = [t.to_dict() for t in TaskContainer.query.all()]
         return make_response(task_lists, 200)
     
-    # def post(self):
-    #     data = request.get_json()
-    #     try:
-    #         # this will need to be defined further
-    #         task_container = TaskAssignment(
-    #             user_id = data.get("user_id"),
-    #             task_container_id = data.get("task_container_id"),
-    #             complete = data.get("complete")
-    #         )
-    #         db.session.add(task_container)
-    #         db.session.commit()
-    #         return make_response(task_container.to_dict(only =("user_id", "task_container_id", "complete",)), 201)
-    #     except:
-    #         return make_response({"error": "error message here"}, 422)
+    def post(self):
+        data = request.get_json()
+        try:
+            task_container = TaskContainer(
+                name = data.get("name"),
+            )
+            db.session.add(task_container)
+            db.session.commit()
+            return make_response(task_container.to_dict(only =("name",)), 201)
+        except:
+            return make_response({"error": "error message here"}, 422)
 
 api.add_resource(TaskContainers, "/presets")
 

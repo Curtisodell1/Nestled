@@ -4,30 +4,32 @@ import { UserContext } from '../Context'
 
 function TaskListCard({name, id}){
     const {user} = useContext(UserContext)
+    const [taskId, setTaskId] = useState(id)
 
-    function assignPresetToUser(e, id){{
+
+    function assignPresetToUser(){{
         let addToUser = {
-            "user_id": (user.id),
-            "task_container_id": id,
-            "complete": false
+            "user_id": user.id,
+            "task_container_id": taskId,
+            "complete": parseInt(0)
         }
         console.log(addToUser)
-        fetch("/presets", {
+        fetch("/assignments", {
             method: "POST",
             headers: {
             "Content-Type": "Application/JSON",
         },
         body: JSON.stringify(addToUser),
         })
-            .then((res) => res.json())
+        .then((res) => res.json())
     }
 }
 
     return(
-        <div>
+        <div className='TaskCard'>
         <h1>{name}</h1>
         <p>{id}</p>
-        <button onClick={() => assignPresetToUser}>Add to my list</button>
+        <button onClick={(e) => assignPresetToUser(e)}>Add to my list</button>
         </div>
     )
 }
