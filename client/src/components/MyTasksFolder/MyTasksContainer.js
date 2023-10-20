@@ -2,7 +2,7 @@ import MyTasksCard from "./MyTasksCard"
 
 function TaskContainer( {myTasks} ) {
     return (
-    <div className="Cards">
+    <div className="MyTasksCardContainer">
         {myTasks.map((task) => (
             <MyTasksCard
             {...task}

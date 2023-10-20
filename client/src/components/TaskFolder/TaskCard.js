@@ -11,15 +11,15 @@ function TaskCard({id, title, about, time_requirement, task_container_id, preset
         {
         method: 'DELETE',
         })
-        .then(setTasks(tasks.filter( ( task ) => {
-            if ( task.id === id ) {
-                return false }
-            }))
-        )
+        .then(r=>r.json())
+        // .then(setTasks(tasks.filter( ( task ) => {
+        //     if ( task.id === id ) {
+        //         return false }
+        //     }))
     }
 
     function handlePresetChange(e){
-        fetch('/task/' + id, {
+        fetch('/task/' + presetId, {
         method: 'PATCH',
         body: JSON.stringify({
             task_container_id: e.target.value,
@@ -64,7 +64,7 @@ function TaskCard({id, title, about, time_requirement, task_container_id, preset
             </select>
             <button 
             className='Buttons'
-            onClick={(e) => handleDelete(id)}
+            onClick={(e) => handleDelete(e.target.id)}
             >
             Delete
             </button>

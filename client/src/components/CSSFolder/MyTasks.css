@@ -1,0 +1,23 @@
+.MyTasksCardContainer{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.MyTasksCards{
+    display: flex;
+    flex-direction: row;   
+    background-color: #B5C7DB;
+    align-items: baseline;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+#MyTaskTitle{
+    justify-self: left;
+}
+
+#MyTaskAbout{
+    justify-self: center;
+
+}
