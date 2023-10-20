@@ -1,9 +1,9 @@
 #homePage{
     display: flex;
     justify-content: flex-start;
-    margin-top: 10vh;
     align-content: center;
     flex-direction: column;
+    background-color: #E1B1B1;
 }
 
 #homeImage{
@@ -17,6 +17,7 @@
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 15rem;
     align-self: center;
+    text-shadow: 10px 10px pink;
 }
 /* #logoImage{
     text-align: center;
@@ -65,6 +66,10 @@
     align-self: center;
     width: 100%;
     box-shadow: 10px 12px pink;
+}
+
+.infoBoxHeader{
+    text-decoration: underline;
 }
 
 .textBox{
