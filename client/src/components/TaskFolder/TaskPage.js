@@ -55,8 +55,9 @@ function Task( {onAddTask}){
 
     return(
         <div id="TaskPageContainer">
-            <div>
-                <h1>Task Currently being worked on</h1>
+            <div className='PageHeader'>
+                <h1 className='HeaderText'>Task Library</h1>
+                <div className='HeaderPageSpacer'></div>
             </div>
             <form onSubmit={handleSubmit} className="TaskPageForm">
                 <input placeholder="Task Title"

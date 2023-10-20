@@ -15,11 +15,16 @@ function MyTasks(){
     }, [])
         
     return (
+        <div>
+        <div className='PageHeader'>
+            <h1 className='HeaderText'>Assigned Tasks</h1>
+            <div className='HeaderPageSpacer'></div>
+        </div>
         <MyTasksContainer
         myTasks = {myTasks}
         >
         </MyTasksContainer>
-        
+        </div>
     )
 }
 
