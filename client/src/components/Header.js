@@ -23,19 +23,18 @@ function Header(){
     return(
         <div className="HeaderStyle">
             <span className="NavBarButtonContainer">
-                <button>
                     <Link to = "/" >
-                        <button>
+                        <button className="headerButtons">
                             Home
                         </button>
                     </Link> 
                     <Link to = "/task">
-                        <button>
+                        <button className="headerButtons">
                             Task
                         </button>
                     </Link>
                     <Link to ="/tasklist">
-                        <button>
+                        <button className="headerButtons">
                             Preset Tasks
                         </button>
                     </Link>
@@ -45,14 +44,14 @@ function Header(){
                         </button>
                     </Link> */}
                     <Link to = "/mytasks">
-                        <button>
+                        <button className="headerButtons">
                             MyTasks
                         </button>
                     </Link>
-                </button>
             </span>
             <span className="LoginButtonContainer">
                 <button
+                className="headerButtons"
                 onClick = { () => logout()}
                 >
                 Logout

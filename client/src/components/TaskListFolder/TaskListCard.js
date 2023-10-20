@@ -25,11 +25,20 @@ function TaskListCard({name, id}){
     }
 }
 
+// function handleDelete(){
+//     fetch('/assignment' + id, 
+//     {
+//     method: 'DELETE',
+//     })
+//     .then(res => res.json())
+// }
+
     return(
         <div className='TaskCard'>
         <h1>{name}</h1>
         <p>{id}</p>
         <button onClick={(e) => assignPresetToUser(e)}>Add to my list</button>
+        {/* <button onClick={(e) => handleDelete(e)}>Remove from my ToDo list</button> */}
         </div>
     )
 }

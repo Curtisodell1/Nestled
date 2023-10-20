@@ -1,14 +1,24 @@
 
-#HeaderStyle{
-    background-color: blue;
-    height: 7vh;
+.HeaderStyle{
+    background-color: #D2CAE2;
+    height: 6vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 10px 10px pink;
 }
 
-#LoginButtonContainer{
-    background-color: green;
+.LoginButtonContainer{
+
 }
 
-#NavBarButtonContainer{
-    background-color: yellow;
+.headerButtons{
+    margin: 20px;
+    padding: 6px;
+    box-shadow: black;
+    box-shadow: 7px 7px;
+    border-top-left-radius: 15px;
 }
+
+
 

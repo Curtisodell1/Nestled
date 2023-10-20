@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 
-function TaskCard({id, title, about, time_requirement, task_container_id, presets}){
+function TaskCard({id, title, about, time_requirement, task_container_id, presets, tasks, setTasks}){
 
     const [presetId, setPresetId] = useState("")
 
@@ -11,8 +11,11 @@ function TaskCard({id, title, about, time_requirement, task_container_id, preset
         {
         method: 'DELETE',
         })
-        .then(res => res.json())
-        
+        .then(setTasks(tasks.filter( ( task ) => {
+            if ( task.id === id ) {
+                return false }
+            }))
+        )
     }
 
     function handlePresetChange(e){
@@ -46,7 +49,7 @@ function TaskCard({id, title, about, time_requirement, task_container_id, preset
                 </select>
                 <h1>{title}</h1>
                 <p>{about}</p>
-                <p>{time_requirement}</p>
+                <p>{time_requirement} minutes</p>
                 <button onClick={(e) => handleDelete(id)}>Delete</button>
             </div>
     )

@@ -216,12 +216,17 @@ class Assign(Resource):
         
 api.add_resource(Assign, "/assignments")
 
-# class MyTaskContainers(Resource):
-#     def get(self):
-#         my_task_list = [t.to_dict() for t in TaskAssignment.query.filter(TaskAssignment.user_id == user_id)]
-#         return make_response(my_task_list)
+# class AssignmentById(Resource):
+#     def delete(self, task_container_id):
+#         user_id = session.get("user_id")
+#         Assignment = TaskAssignment.query.all()
+#         if Assignment == None:
+#             return make_response({"error": "Task assignment not found"}, 404) 
+#         db.session.delete(Assignment)
+#         db.session.commit()
+#         return make_response({}, 204)
 
-# api.add_resource(MyTaskContainers, "/mypresets")
+# api.add_resource(AssignmentById, "/assignment/<int:task_container_id>")
 
 if __name__ == '__main__':
     app.run(port=5555, debug=True)
