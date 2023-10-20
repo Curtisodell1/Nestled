@@ -46,9 +46,7 @@ function TaskCard({id, title, about, time_requirement, task_container_id, preset
             className='CardBodyText'
             >{about}
             </p>
-            
             <p
-
             >Time Required: {time_requirement} minutes
             </p>
             <span>

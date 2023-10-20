@@ -3,7 +3,7 @@ import TaskListCard from "./TaskListCard";
 
 function TaskListList( {presets} ) {
     return (
-    <div>
+    <div className="PresetCard">
         {presets.map((preset) => (
             <TaskListCard
             key = {preset.id}

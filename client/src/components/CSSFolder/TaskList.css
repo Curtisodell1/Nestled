@@ -1,0 +1,32 @@
+.PresetCard{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 4%;
+}
+
+.PresetCards{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 2vh;
+    margin-left: 3vw;
+    margin-right: 3vw;
+    margin-bottom: 3vh;
+    background-color: #B5C7DB;
+    padding: 2%;
+    height: 15vh;
+    width: 7vw;
+    border-top-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    box-shadow: 10px 10px #6D6D6D;
+
+}
+
+.PresetHeader{
+    background-color: #E1B1B1;
+    min-width: 10vw;
+    box-shadow: 10px 10px black;
+}
