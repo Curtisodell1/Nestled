@@ -34,24 +34,45 @@ function TaskCard({id, title, about, time_requirement, task_container_id, preset
     
 
     return(
-            <div className="TaskCard">
-                <select className="Dropdown" 
-                value={presetId}
-                onChange={(e) => handlePresetChange(e)}
-                id = "PresetDropDown"
-                >
-                    {presets.map((preset) => 
-                    <option 
-                    value={preset.id}
-                    >
-                    {preset.name}
-                    </option>) }
-                </select>
-                <h1>{title}</h1>
-                <p>{about}</p>
-                <p>{time_requirement} minutes</p>
-                <button onClick={(e) => handleDelete(id)}>Delete</button>
+    <div>
+        <div className='Card'>
+            <div
+            className='CardHeader'>
+            <h1 
+            
+            >{title}</h1>
             </div>
+            <p 
+            className='CardBodyText'
+            >{about}
+            </p>
+            
+            <p
+
+            >Time Required: {time_requirement} minutes
+            </p>
+            <span>
+            <select
+            className="Buttons"
+            value={presetId}
+            onChange={(e) => handlePresetChange(e)}
+            >
+                {presets.map((preset) => 
+                <option 
+                value={preset.id}
+                >
+                {preset.name}
+                </option>) }
+            </select>
+            <button 
+            className='Buttons'
+            onClick={(e) => handleDelete(id)}
+            >
+            Delete
+            </button>
+            </span>
+        </div>
+    </div>
     )
 }
 
