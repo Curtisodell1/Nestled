@@ -34,10 +34,11 @@ function TaskListCard({name, id}){
 // }
 
     return(
-        <div className='TaskCard'>
-        <h1>{name}</h1>
-        <p>{id}</p>
-        <button onClick={(e) => assignPresetToUser(e)}>Add to my list</button>
+        <div className='PresetCards'>
+        <h1
+        className='PresetHeader'>{name}</h1>
+        <button
+        className='Buttons' onClick={(e) => assignPresetToUser(e)}>Add to my list</button>
         {/* <button onClick={(e) => handleDelete(e)}>Remove from my ToDo list</button> */}
         </div>
     )
