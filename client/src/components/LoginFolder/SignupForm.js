@@ -36,19 +36,19 @@ function SignupForm({setSignup}) {
     
     return(
     <div>
-        <h2>You know what to do (hint: signup)</h2>
+        <h2 className="LoginText">Signup</h2>
         <form onSubmit = { onSubmit }>
-            <label>
+            <label className="LoginLabel">
             Username
             </label>
             <input type='text' name='username' value={ formData.username } onChange={ onChange } />
             <>
-            <label>
+            <label className="LoginLabel">
             Password
             </label>
             <input type='password' name='password' value={ formData.password } onChange={ onChange } />
             </>
-            <button type='submit'>Submit</button>
+            <button className="Buttons" type='submit'>Submit</button>
         </form>
     </div>
     )

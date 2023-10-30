@@ -9,22 +9,29 @@ function Login(){
 
     return(
         <div>
+            <div className='PageHeader'>
+                <h1 className='HeaderText'>Login</h1>
+                <div className='HeaderPageSpacer'></div>
+            </div>
+            <div className='LoginBody'>
             {signup
             ?
             <div>
             <SignupForm 
             setSignup = {setSignup} >
             </SignupForm>
-            <button onClick={() => setSignup(!signup)}>Login</button>
+            <button className="Buttons" onClick={() => setSignup(!signup)}>Login</button>
             </div>
             :
             <div>
             <LoginForm
             setSignUp = {setSignup} >
             </LoginForm>
-            <button onClick={() => setSignup(!signup) }>Signup</button>
+            <button className='Buttons' onClick={() => setSignup(!signup) }>Signup</button>
             </div>
             }
+            </div>
+            
         </div>
     )
 }
