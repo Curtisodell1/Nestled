@@ -5,11 +5,10 @@ return(
     <div className="MyTasksCards">
             <h2
             id="MyTaskTitle">{title}</h2>
-            <div></div>
             <div
             id="MyTaskAbout"
-            >{about}</div>
-            <div></div>
+            >{about}
+            </div>
     </div>
 )
 }

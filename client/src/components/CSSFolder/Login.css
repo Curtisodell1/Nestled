@@ -10,7 +10,7 @@
 .LoginText{
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 3rem;
-
+    text-shadow: 5px 5px pink;
 }
 
 .LoginLabel{

@@ -20,7 +20,7 @@ function Login(){
             <SignupForm 
             setSignup = {setSignup} >
             </SignupForm>
-            <button onClick={() => setSignup(!signup)}>Login</button>
+            <button className="Buttons" onClick={() => setSignup(!signup)}>Login</button>
             </div>
             :
             <div>

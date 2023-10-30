@@ -40,7 +40,7 @@ function LoginForm({setSignup}) {
         <h2 className="LoginText" >Login</h2>
         <form onSubmit = { onSubmit }>
                 <label className="LoginLabel">
-                    Username
+                Username
                 </label>
                 <input type='text' name='username' value={ formState.username } onChange={ onChange } />
                 <>
