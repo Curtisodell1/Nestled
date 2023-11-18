@@ -44,15 +44,22 @@ function TaskList(){
                 <h1 className='HeaderText'>Preset Library</h1>
                 <div className='HeaderPageSpacer'></div>
             </div>
-            <form onSubmit={(e)=>handleSubmit(e)}>
-                <span>
-                <input 
-                onChange={(e) => setPresetName(e.target.value)}
-                placeholder="New Preset Name"
-                ></input>
-                <button type="submit">submit</button>
-                </span>
-            </form>
+            <div className="CenterContainer">
+                <div className="FormHolder">
+                    <form 
+                    className="PageForm"
+                    onSubmit={(e)=>handleSubmit(e)}>
+                        <span>
+                        <input 
+                        onChange={(e) => setPresetName(e.target.value)}
+                        placeholder="New Preset Name"
+                        ></input>
+                        <button 
+                        type="submit">submit</button>
+                        </span>
+                    </form>
+                </div>
+            </div>
             </div>
         </span>
         <TaskListList presets={presets}></TaskListList>
