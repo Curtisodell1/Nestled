@@ -30,3 +30,27 @@
     min-width: 10vw;
     box-shadow: 10px 10px black;
 }
+
+.PageForm{
+    display: flex;
+    margin: 10px;
+    justify-content: space-between;
+    align-content: center;
+}
+
+.FormHolder{
+    width: 20vw;
+    background-color: #E1B1B1;
+    height: 5vh;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    box-shadow: 10px 10px black;
+}
+
+.CenterContainer{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin: 10px;
+}
