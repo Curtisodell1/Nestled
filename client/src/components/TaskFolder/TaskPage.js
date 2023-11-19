@@ -59,28 +59,37 @@ function Task( {onAddTask}){
                 <h1 className='HeaderText'>Task Library</h1>
                 <div className='HeaderPageSpacer'></div>
             </div>
-            <form onSubmit={handleSubmit} className="TaskPageForm">
-                <input placeholder="Task Title"
-                type = "text"
-                onChange={(e) => setTitle(e.target.value)}
-                />
-                <input 
-                placeholder="Task Description"
-                onChange={(e) => setAbout(e.target.value)}
-                />
-                <input 
-                placeholder="time to complete"
-                onChange={(e) => setTimeRequirement(e.target.value)}
-                />
-                <select className="Dropdown">
-                    {presets.map((preset) => 
-                    <option value={preset.id}>{preset.name}</option>) }
-                </select>
-                <button
-                type="submit">
-                Submit
-                </button>
-            </form>
+            <div className="CenterContainer">
+                <div className="FormHolder">
+                    <form onSubmit={handleSubmit} className="TaskPageForm">
+                        <input 
+                        className='FormInputField'
+                        placeholder="Task Title"
+                        type = "text"
+                        onChange={(e) => setTitle(e.target.value)}
+                        />
+                        <input 
+                        className='FormInputField'
+                        placeholder="Task Description"
+                        onChange={(e) => setAbout(e.target.value)}
+                        />
+                        <input 
+                        className='FormInputField'
+                        placeholder="time to complete"
+                        onChange={(e) => setTimeRequirement(e.target.value)}
+                        />
+                        <select 
+                        className="FormInputField">
+                            {presets.map((preset) => 
+                            <option value={preset.id}>{preset.name}</option>) }
+                        </select>
+                        <button
+                        type="submit">
+                        Submit
+                        </button>
+                    </form>
+                </div>
+            </div>
             <TaskContainer
             tasks={tasks}
             presets={presets}
