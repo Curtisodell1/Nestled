@@ -20,6 +20,8 @@
 #MyTaskTitle{
     justify-self: left;
     min-width: 20vw;
+    display: flex;
+    margin-left: 10px;
 }
 
 #MyTaskAbout{
