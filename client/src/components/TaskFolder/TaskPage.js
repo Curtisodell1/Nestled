@@ -45,7 +45,7 @@ function Task( {onAddTask}){
         fetch("/tasks")
         .then((r) => r.json())
         .then((data) => setTasks(data) )
-    }, [setTasks])
+    }, [tasks])
 
     useEffect(() => {
         fetch("/presets")
