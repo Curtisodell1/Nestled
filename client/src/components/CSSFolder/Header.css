@@ -1,11 +1,12 @@
 
 .HeaderStyle{
     background-color: #D2CAE2;
-    height: 6vh;
+    height: 50px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     box-shadow: 10px 10px pink;
+    padding-bottom: 5px;
 }
 
 .LoginButtonContainer{

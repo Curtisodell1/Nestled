@@ -10,9 +10,7 @@
     background-color: #B5C7DB;
     align-items: baseline;
     justify-content: flex-start;
-    margin-left: 5vw;
-    margin-right: 5vw;
-    margin-bottom: 15px;
+    margin: 15px;
     box-shadow: 10px 10px #6D6D6D;
     min-width: 60vw;
 }

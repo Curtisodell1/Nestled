@@ -1,7 +1,5 @@
 #homePage{
     display: flex;
-    justify-content: flex-start;
-    align-content: center;
     flex-direction: column;
     background-color: #E1B1B1;
 }
@@ -42,7 +40,7 @@
     justify-content: space-evenly;
     align-items: center;
     background-color: #DED2B2;
-    height: 40vh;
+    height: 600px;
 }
 
 .homeInfoBoxes{
@@ -50,11 +48,9 @@
     display: flex;
     align-content: flex-start;
     align-items: center;
-    width: 30vw;
-    min-height: 30vh;
-
+    width: 375px;
+    height: 500px;
     flex-wrap: wrap;
-
 }
 
 
