@@ -16,7 +16,6 @@ function Task( {onAddTask}){
     //     timeRequirement:''
     // })
 
-
     console.log(user)
 
     function handleSubmit(e) {
@@ -45,7 +44,7 @@ function Task( {onAddTask}){
         fetch("/tasks")
         .then((r) => r.json())
         .then((data) => setTasks(data) )
-    }, [tasks])
+    }, [])
 
     useEffect(() => {
         fetch("/presets")

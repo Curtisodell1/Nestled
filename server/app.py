@@ -9,7 +9,7 @@ from config import app, db, api
 from models import *
 
 
-# Login and Signup pages - revisit after researching a bit more
+#Login secret key (put in seperate .env folder in production)
 app.secret_key = b'5\xe9t\x01\x12A\n\xe4\xb0\x9b\x05\xde\xd4\xc5\x888'
 
 class Signup(Resource):
